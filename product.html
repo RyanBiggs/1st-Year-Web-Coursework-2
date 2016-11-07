@@ -1,0 +1,98 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<!-- This is a comment tag -->
+		<meta charset="UTF-8" />
+		<title>Camera Shop</title>
+		<link rel="stylesheet" href="siteLayout.css" type="text/css" media="screen,projection" />
+		<link rel="stylesheet" href="siteTheme.css" type="text/css" media="screen,projection" />
+		<style>
+			/* For styling specific to this page */
+			#mainBody {
+				min-height: 615px;
+			}
+		</style>
+		<script src="jquery-2.2.0.min.js"></script>
+		<script src='CameraShop.js'></script>
+		<script>
+		
+			$(document).ready(function() {
+				
+				// Populate the nav bar
+				populateNav("navmenu");
+				
+				// Check if page called from search results page and add anchor to breadcrumb
+				var vars = [], hash;
+				var q = document.URL.split('?')[1];
+				
+				if (q != undefined)
+				{
+					q = q.split('&');
+					for (var i = 0; i < q.length; i++)
+					{
+						hash = q[i].split('=');
+						vars.push(hash[1]);
+						vars[hash[0]] = hash[1];
+					}
+				}
+				
+				if (vars["searchTerm"] != undefined)
+				{
+					$('#breadCrumb').append(' - <a href="results.html?id=' + vars['id'] + '&searchTerm=' + vars['searchTerm'] + '">Return to search results</a>');
+				}
+				
+						var productsDomTree = $.parseXML(productsXmlString);
+						var $products = $( productsDomTree );
+				// The product ID is in vars!!!!!!  Cheers Andy :-)
+				var id = $products.find("id").text();
+				// Check if search term is in the data, ignoring case	
+				if (id.indexOf( hash[0001] ) > -1)
+				{
+					// Search term found, save results index
+					$row = $products.find('product').filter(":nth-child("+ hash[0001] + ")");
+					
+					// output a row in the table
+					var Col0 = $row.find('id').text();
+					var Col1 = $row.find('title').text();
+					var Col2 = $row.find('price').text();
+					var Col3 = $row.find('').text();
+					var Col4 = $row.find('').text();
+					var Col5 = $row.find('picture').text(); 
+					var Col6 = $row.find('megapixels').text();
+					var Col7 = $row.find('description').text();
+					var Col8 = $row.find('sensor').text();
+					var Col9 = $row.find('iso').text();
+					var Col10 = $row.find('lens_mount').text();
+					var test = $( "#mainBody" ).get( 0);
+					$('#mainBody').append("<p><b>" + Col0 +
+						"<b> <br/>" + Col1 + "<br/>" + "£" + Col2 +
+						"<br/>" + Col3 + "<br/>" + Col4 +
+						"<br/>" + Col3 + "<img src='ProductImages/"+ Col5 +"' /></p><p>Specifcation</p>" + "Megapixels: " + Col6 +
+						 "<br/>" + "Sensor: " + Col8 + "<br/>" + "Iso: " + Col9 + "<br/>" + "Lens Mount: " + Col10 + "<br/>" + "Product Desciption: " + "<br/>" + Col7 );
+				}
+				
+				
+				
+				});
+				
+			
+		</script>
+	</head>
+	<body>
+		<header>
+			<img src="logo.jpg" alt="Camera Shop Logo" />
+			<h1>Camera Shop</h1>
+			<div id="searchBar"><form action="results.html">
+				<h2>Search:</h2> <input type="text" name="searchTerm" id="searchTerm" max-length="15"><input type="submit" id="theSubmit" value="Submit">
+			</form></div>
+			<div id="breadCrumb"><a href="index.html"><img src="home.jpg" alt="The home button" /></a></div>
+		</header>
+		<ul class="navmenu">
+		</ul>
+		<div id="mainBody">
+		</div>
+		<footer>
+			<p>&copy Camera Shop 2016</p>
+		</footer>
+	</body>
+</html>

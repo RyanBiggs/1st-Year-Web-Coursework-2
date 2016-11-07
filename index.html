@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<!-- This is a comment tag -->
+		<meta charset="UTF-8" />
+		<title>Camera Shop</title>
+		<link rel="stylesheet" href="siteLayout.css" type="text/css" media="screen,projection" />
+		<link rel="stylesheet" href="siteTheme.css" type="text/css" media="screen,projection" />
+		<style>
+			/* For styling specific to this page */
+			#mainBody {
+				min-height: 615px;
+			}
+
+		</style>
+		<script src="jquery-2.2.0.min.js"></script>
+		<script src='CameraShop.js'></script>
+		<script>
+			preloadCarouselImages();
+		
+			$(document).ready(function() {
+				
+				// Populate the nav bar
+				populateNav("navmenu");
+				
+				startCarousel("mainBody");
+				
+			});
+		</script>
+	</head>
+	<body>
+		<header>
+			<img src="logo.jpg" alt="Camera Shop Logo" />
+			<h1>Camera Shop</h1>
+			<div id="searchBar"><form action="results.html">
+				<h2> Search: </h2><input type="text" name='searchTerm' id="searchTerm" max-length="15"><input type="submit" id="theSubmit" value="Submit">
+			</form></div>
+		</header>
+		<ul class="navmenu">
+		</ul>
+		<div id="mainBody">
+		</div>
+		<footer>
+			<p>&copy Camera Shop 2016</p>
+		</footer>
+	</body>
+</html>

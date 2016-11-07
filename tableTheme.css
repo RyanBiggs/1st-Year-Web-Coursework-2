@@ -1,0 +1,24 @@
+table {
+	margin: 23px;
+	width: 600px;
+}
+button {
+	padding: 5px;
+}
+.tableHeader, .sortText {
+	background-color: #0F5678;
+	color: white;
+	padding: 5px;
+}
+.rowOdd {
+	background-color: #0F5678;
+}
+.rowEven {
+	background-color: #8DC0D9;
+}
+.tableImg {
+	height: 20px;
+}
+table a:link, table a:visited, table a:hover, a:active {
+    color: white;
+}
